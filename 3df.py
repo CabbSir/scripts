@@ -93,9 +93,13 @@ def pick_files(path, window):
     s()
     open_file_win = window.Dialog
 
+    first_file = True
     name_list = []
     for filename in os.listdir(path):
         if len(filename.split(".")) == 3 or filename.split(".")[1] == '.ply':
+            continue
+        if first_file:
+            first_file = False
             continue
         name_list.append("\"" + filename + "\"")
     open_file_win.ComboBox.Edit.type_keys(path)
