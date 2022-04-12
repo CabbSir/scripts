@@ -5,7 +5,7 @@ from pywinauto import Application
 
 config = {
     "exe_path": "C:\\Program Files\\3DF Zephyr Aerial\\3DF Zephyr Aerial.exe",  # 3df的exe文件路径
-    "data_path": "D:\\data\\",  # 数据存放路径
+    "data_path": "D:\\cabbsir\\3.18农科院小麦\\单拍\\100CANON\\",  # 数据存放路径
     "use_mask": True,  # 是否使用蒙版
     "dense_time": 70 * 60,  # 重建最大时长 默认70分钟 根据情况调节
 }
@@ -173,7 +173,7 @@ def export_points(win, path):
     if save_file_win.class_name() != "QFileDialog":
         return False
 
-    save_file_win.Edit.type_keys(path + "\\" + str(int(time.time())))
+    save_file_win.Edit.type_keys(path + "\\" + str(int(time.time())) + ".ply")
     save_file_win.Edit.type_keys("{ENTER}")
     time.sleep(0.5)
 
@@ -227,6 +227,14 @@ if __name__ == '__main__':
         if folder in success_list:
             continue
         begin = int(time.time())
+        ply_exist = False
+        for x in os.listdir(config['data_path'] + folder):
+            if '.ply' in x:
+                print(config['data_path'] + folder + " 已经存在，跳过即可")
+                ply_exist = True
+                break
+        if ply_exist:
+            continue
         if app is None:
             app, win = open_app()
         if build_dense(app, win, config['data_path'] + folder):
