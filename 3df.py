@@ -237,8 +237,8 @@ if __name__ == '__main__':
             write_log(msg=folder + " 重建用时" + str(int(time.time() - begin)), is_success=False, is_log=True)
         else:
             try_again_success = False
-            # 失败重试两次
-            for i in range(0, 2):
+            # 失败重试一次
+            for i in range(0, 1):
                 print(folder + " 数据重建失败，重试第 " + str(i + 1) + " 次")
                 if app is not None:
                     app.kill()
