@@ -173,7 +173,9 @@ def export_points(win, path):
     if save_file_win.class_name() != "QFileDialog":
         return False
 
+    s()
     save_file_win.Edit.type_keys(path + "\\" + str(int(time.time())) + ".ply")
+    s()
     save_file_win.Edit.type_keys("{ENTER}")
     time.sleep(0.5)
 
