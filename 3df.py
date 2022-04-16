@@ -226,6 +226,9 @@ if __name__ == '__main__':
 
     # 读取目录
     for folder in os.listdir(config['data_path']):
+        if len(folder.split('.')) == 2:
+            # 非文件夹 跳过
+            continue
         if folder in success_list:
             continue
         begin = int(time.time())
