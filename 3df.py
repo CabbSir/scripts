@@ -44,6 +44,11 @@ def open_app():
     app1 = Application(backend='uia').start(config['exe_path'])
     win1 = app1.Dialog
     win1.wait("ready", timeout=10)
+    
+    if win1.Dialog.class_name() == "QMessageBox":
+        win1.Dialog.NoButton.click_input()
+    s()
+    
     global WIN_NUM
     WIN_NUM = len(win1.children())
     return app1, win1
