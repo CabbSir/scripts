@@ -234,6 +234,8 @@ if __name__ == '__main__':
         if len(folder.split('.')) == 2:
             # 非文件夹 跳过
             continue
+        if len(os.listdir(folder)) <= 10:
+            continue
         if folder in success_list:
             continue
         begin = int(time.time())
