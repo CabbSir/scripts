@@ -5,3 +5,4 @@
 |metashape.py     |     metashape自动重建脚本 |
 |3df.py         |       3df自动重建脚本     |
 |3df-xiao.py | 仅适用于肖哥电脑的3df重建脚本 |
+|ply2pcd | 批量将ply文件转换为pcd文件 |
