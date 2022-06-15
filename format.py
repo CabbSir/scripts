@@ -3,8 +3,10 @@
 """
 
 import os
+import tkinter
 from tkinter import *
 from tkinter.filedialog import askdirectory, askopenfilenames
+
 import open3d as o3d
 import numpy as np
 
@@ -83,6 +85,7 @@ def format():
         pc_to_pc()
     else:
         mesh_to_pc()
+    tkinter.messagebox.showinfo('提示', '所有转换完成')
 
 
 root = Tk()
